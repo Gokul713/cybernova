@@ -1,0 +1,10 @@
+{
+  "name": "cybernova",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CyberNova — SVCE Cybersecurity & Technology Club. Pure HTML + CSS + JavaScript.",
+  "scripts": {
+    "dev": "python3 -m http.server 3000",
+    "start": "python3 -m http.server 3000"
+  }
+}

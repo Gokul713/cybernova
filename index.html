@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" class="cn-root">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#05070d" />
+  <title>CyberNova</title>
+  <meta name="description" content="CyberNova — the cybersecurity & technology community at Sri Venkateswara College of Engineering. We think like attackers, build like engineers, and defend like professionals." />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- Animated network canvas background -->
+  <canvas id="networkCanvas" class="network-canvas" aria-hidden="true"></canvas>
+  <div class="global-grid" aria-hidden="true"></div>
+  <div class="scanline-global" aria-hidden="true"></div>
+
+  <a href="#home" class="skip-link">Skip to content</a>
+
+  <!-- ================= NAV ================= -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#home" class="brand" aria-label="CyberNova home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="26" height="26" fill="none">
+            <path d="M16 2 4 7v9c0 7 5 11 12 14 7-3 12-7 12-14V7L16 2Z" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M16 9v14M9 16h14" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="16" cy="16" r="3" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>CYBERNOVA</strong>
+          <em>SECURITY </em>
+        </span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#domains">DOMAINS</a>
+        <a href="#lab">OPERATIONS</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#team">TEAM</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
+
+      <a href="#contact" class="btn btn-primary nav-cta">JOIN THE NETWORK</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#home">HOME</a>
+    <a href="#about">ABOUT</a>
+    <a href="#domains">DOMAINS</a>
+    <a href="#lab">OPERATIONS</a>
+    <a href="#projects">PROJECTS</a>
+    <a href="#team">TEAM</a>
+    <a href="#contact">CONTACT</a>
+    <a href="#contact" class="btn btn-primary">JOIN THE NETWORK</a>
+  </div>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section id="home" class="hero">
+      <div class="hero-orb orb-blue" aria-hidden="true"></div>
+      <div class="hero-orb orb-violet" aria-hidden="true"></div>
+      <div class="hero-orb orb-cyan" aria-hidden="true"></div>
+      <div class="hero-scan" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="term-label">
+            <span class="dot pulse-dot"></span>
+            <span id="bootLine">&gt; INITIALIZING CYBERNOVA NETWORK...</span>
+          </div>
+
+          <div class="status-row">
+            <span class="status-pill"><span class="dot pulse-dot"></span> SYSTEM STATUS: ONLINE</span>
+            <span class="status-meta">CYBERNOVA </span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="reveal-word" style="--d:.05s">DEFEND.</span>
+            <span class="reveal-word grad" style="--d:.18s">DISCOVER.</span>
+            <span class="reveal-word grad2" style="--d:.31s">INNOVATE.</span>
+          </h1>
+
+          <p class="hero-desc">
+            Where curious minds learn to think like attackers, build like engineers,
+            and defend like professionals.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#about" class="btn btn-primary">ENTER CYBERNOVA <span class="arr">&rarr;</span></a>
+            <a href="#projects" class="btn btn-ghost">EXPLORE OUR WORK</a>
+          </div>
+
+          <div class="hero-terminal" aria-hidden="true">
+            <div class="term-head">
+              <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
+              <span class="term-title">secure_shell — cybernova</span>
+            </div>
+            <pre class="term-body" id="typeTerminal"></pre>
+          </div>
+        </div>
+
+        <!-- Security node dashboard -->
+        <aside class="soc-card" aria-label="CyberNova security node monitor">
+          <div class="soc-head">
+            <span>CYBERNOVA // SECURITY NODE</span>
+            <span class="soc-live"><span class="dot pulse-dot"></span>LIVE</span>
+          </div>
+          <ul class="soc-metrics">
+            <li><span>SYSTEM</span><b class="ok">ONLINE</b></li>
+            <li><span>NETWORK</span><b class="ok">SECURE</b></li>
+            <li><span>THREATS</span><b class="warn">MONITORING</b></li>
+            <li><span>FIREWALL</span><b class="ok">ACTIVE</b></li>
+          </ul>
+
+          <div class="soc-graph">
+            <div class="soc-graph-head"><span>NETWORK ACTIVITY</span><span id="socRate">— kb/s</span></div>
+            <svg viewBox="0 0 300 90" preserveAspectRatio="none" class="soc-svg">
+              <polyline id="socLine" fill="none" stroke="url(#socGrad)" stroke-width="2" points="" />
+              <defs>
+                <linearGradient id="socGrad" x1="0" x2="1">
+                  <stop offset="0" stop-color="var(--cyan)"/>
+                  <stop offset="1" stop-color="var(--violet)"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="soc-threat">
+            <span>THREAT LEVEL</span>
+            <div class="threat-bar"><i id="threatFill"></i></div>
+            <b id="threatLabel" class="ok">LOW</b>
+          </div>
+
+          <div class="soc-foot"><span class="dot pulse-dot"></span> [ SYSTEM SECURE ]</div>
+        </aside>
+      </div>
+
+      <a href="#about" class="scroll-cue" aria-label="Scroll to access">
+        <span>SCROLL TO ACCESS</span>
+        <span class="scroll-line"><i></i></span>
+      </a>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="section about">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>[ 01 // IDENTITY ]</p>
+        <h2 class="section-title" data-reveal>WHO WE ARE</h2>
+
+        <div class="about-statement" data-reveal>
+          <span>WE THINK LIKE ATTACKERS.</span>
+          <span class="grad">WE BUILD LIKE ENGINEERS.</span>
+          <span class="grad2">WE DEFEND LIKE PROFESSIONALS.</span>
+        </div>
+
+        <div class="about-grid">
+          <p class="about-desc" data-reveal="left">
+            CyberNova is the cybersecurity community at SVCE where students explore
+            ethical hacking, security research, artificial intelligence, networking,
+            digital forensics, and secure software development. We turn curiosity into
+            capability — one exploit, one defense, one build at a time.
+          </p>
+
+          <ol class="flow" data-reveal="right" aria-label="CyberNova operational flow">
+            <li><span class="flow-node"></span><b>RECON</b><em>Map the attack surface.</em></li>
+            <li><span class="flow-node"></span><b>ANALYZE</b><em>Understand the weakness.</em></li>
+            <li><span class="flow-node"></span><b>EXPLOIT</b><em>Prove the impact — safely.</em></li>
+            <li><span class="flow-node"></span><b>SECURE</b><em>Patch, harden, verify.</em></li>
+            <li><span class="flow-node"></span><b>DEFEND</b><em>Monitor and respond.</em></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STATS ================= -->
+    <section class="section stats-section">
+      <div class="wrap">
+        <div class="stats-grid">
+          <div class="stat" data-reveal><b class="counter" data-target="100" data-suffix="+">0</b><span>CYBER ENTHUSIASTS</span></div>
+          <div class="stat" data-reveal style="--reveal-delay:80ms"><b class="counter" data-target="20" data-suffix="+">0</b><span>SECURITY PROJECTS</span></div>
+          <div class="stat" data-reveal style="--reveal-delay:160ms"><b class="counter" data-target="10" data-suffix="+">0</b><span>TECH DOMAINS</span></div>
+          <div class="stat" data-reveal style="--reveal-delay:240ms"><b class="counter" data-target="15" data-suffix="+">0</b><span>WORKSHOPS &amp; EVENTS</span></div>
+          <div class="stat" data-reveal style="--reveal-delay:320ms"><b class="inf">&#8734;</b><span>THREATS TO LEARN FROM</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DOMAINS ================= -->
+    <section id="domains" class="section domains">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>[ 02 // CAPABILITIES ]</p>
+        <h2 class="section-title" data-reveal>THE DEFENSE STACK</h2>
+        <p class="section-sub" data-reveal>Eight security modules. One community learning to break and build.</p>
+        <div class="domain-grid" id="domainGrid"></div>
+      </div>
+    </section>
+
+    <!-- ================= CYBER LAB / OPERATIONS ================= -->
+    <section id="lab" class="section lab">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>[ 03 // OPERATIONS ]</p>
+        <h2 class="section-title" data-reveal>INSIDE THE CYBER LAB</h2>
+        <p class="section-sub" data-reveal>Select a module to inspect live capability readouts.</p>
+
+        <div class="lab-shell" data-reveal="scale">
+          <div class="lab-tabs" id="labTabs" role="tablist" aria-label="Cyber lab modules"></div>
+          <div class="lab-view" id="labView"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTF ARENA ================= -->
+    <section id="ctf" class="section ctf">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>[ 04 // ARENA ]</p>
+        <h2 class="section-title" data-reveal>THINK. BREAK. SOLVE.</h2>
+        <p class="section-sub" data-reveal>ENTER THE CTF ARENA</p>
+
+        <div class="ctf-layout">
+          <div class="ctf-grid" id="ctfGrid" data-reveal="left"></div>
+
+          <aside class="leaderboard" data-reveal="right" aria-label="Demo CTF leaderboard">
+            <div class="lb-head">CYBERNOVA CTF // LEADERBOARD<span class="demo-tag">DEMO</span></div>
+            <ol class="lb-list" id="lbList"></ol>
+            <p class="lb-note">Visual demonstration — not a live scoreboard.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section id="projects" class="section projects">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>[ 05 // FIELD WORK ]</p>
+        <h2 class="section-title" data-reveal>SECURITY IN ACTION</h2>
+        <div class="project-grid" id="projectGrid"></div>
+      </div>
+    </section>
+
+    <!-- ================= THREAT INTELLIGENCE ================= -->
+    <section id="threat" class="section threat">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>[ 06 // SOC ]</p>
+        <h2 class="section-title" data-reveal>THREAT INTELLIGENCE</h2>
+        <p class="section-sub" data-reveal>Global monitor — demonstration data only.</p>
+
+        <div class="threat-shell" data-reveal="scale">
+          <div class="threat-map" aria-hidden="true">
+            <div class="map-grid"></div>
+            <div class="map-pings" id="mapPings"></div>
+            <span class="map-label">GLOBAL THREAT MONITOR // DEMO</span>
+          </div>
+          <ul class="threat-readout">
+            <li><span>NETWORK STATUS</span><b class="ok">SECURE</b></li>
+            <li><span>THREAT LEVEL</span><b class="ok">LOW</b></li>
+            <li><span>ACTIVE MONITORS</span><b><span class="tick" data-to="24">0</span></b></li>
+            <li><span>SYSTEMS PROTECTED</span><b><span class="tick" data-to="128">0</span></b></li>
+            <li><span>LAST SCAN</span><b class="cyan">JUST NOW</b></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ACHIEVEMENTS ================= -->
+    <section id="achievements" class="section achievements">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>[ 07 // TRACK RECORD ]</p>
+        <h2 class="section-title" data-reveal>PROOF OF WORK</h2>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </section>
+
+    <!-- ================= ACCESS TERMINAL ================= -->
+    <section id="access" class="section access">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>[ 08 // CHALLENGE ]</p>
+        <h2 class="section-title" data-reveal>CAN YOU THINK LIKE A HACKER?</h2>
+
+        <div class="access-term" data-reveal="scale">
+          <div class="term-head">
+            <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
+            <span class="term-title">CYBERNOVA ACCESS TERMINAL</span>
+          </div>
+          <div class="access-body">
+            <p class="access-hint">&gt; The access code is hidden in plain sight. Inspect the clue.</p>
+            <p class="access-clue">CLUE: <code>base of all binary, doubled, then the word "nova"</code> &mdash; e.g. <code>00nova</code></p>
+            <form id="accessForm" class="access-form" autocomplete="off">
+              <label class="sr-only" for="accessInput">Access code</label>
+              <span class="prompt">&gt;</span>
+              <input id="accessInput" type="text" placeholder="ENTER ACCESS CODE" aria-describedby="accessMsg" />
+              <button type="submit" class="btn btn-primary">AUTHENTICATE</button>
+            </form>
+            <p class="access-msg" id="accessMsg" role="status">SYSTEM: awaiting input...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= JOIN CTA ================= -->
+    <section class="section join">
+      <div class="join-orb" aria-hidden="true"></div>
+      <div class="wrap join-inner" data-reveal>
+        <h2 class="join-title">JOIN THE NETWORK.</h2>
+        <p class="join-text">Don&apos;t just consume technology. Understand it. Break it. Secure it. Build it.</p>
+        <a href="#contact" class="btn btn-primary btn-lg">BECOME A CYBERNOVA MEMBER <span class="arr">&rarr;</span></a>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="section contact">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>[ 09 // UPLINK ]</p>
+        <h2 class="section-title" data-reveal>ESTABLISH CONNECTION</h2>
+
+        <form class="contact-term" id="contactForm" data-reveal="scale" novalidate>
+          <div class="term-head">
+            <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
+            <span class="term-title">transmission — cybernova@svce</span>
+          </div>
+          <div class="contact-body">
+            <div class="field">
+              <label for="cName">&gt; NAME</label>
+              <input id="cName" name="name" type="text" required />
+              <span class="err" data-for="cName"></span>
+            </div>
+            <div class="field">
+              <label for="cEmail">&gt; EMAIL</label>
+              <input id="cEmail" name="email" type="email" required />
+              <span class="err" data-for="cEmail"></span>
+            </div>
+            <div class="field">
+              <label for="cMsg">&gt; MESSAGE</label>
+              <textarea id="cMsg" name="message" rows="4" required></textarea>
+              <span class="err" data-for="cMsg"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">SEND TRANSMISSION <span class="arr">&rarr;</span></button>
+            <p class="contact-success" id="contactSuccess" role="status" hidden>
+              TRANSMISSION RECEIVED.<br>CONNECTION ESTABLISHED.
+            </p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= TEAM ================= -->
+    <section id="team" class="section team">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>[ 10 // PERSONNEL ]</p>
+        <h2 class="section-title" data-reveal>THE DEFENDERS</h2>
+        <p class="section-sub" data-reveal>THE MINDS BEHIND THE NETWORK</p>
+        <div class="team-grid" id="teamGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <strong>CYBERNOVA</strong>
+        <span>SECURE. BUILD. INNOVATE.</span>
+        <em>SVCE — Sri Venkateswara College of Engineering</em>
+      </div>
+      <nav class="footer-social" aria-label="Social links">
+        <a href="#" aria-label="GitHub">GITHUB</a>
+        <a href="#" aria-label="LinkedIn">LINKEDIN</a>
+        <a href="#" aria-label="Instagram">INSTAGRAM</a>
+        <a href="mailto:cybernova@svce.edu" aria-label="Email">EMAIL</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CYBERNOVA </span>
+      <span class="footer-status"><span class="dot pulse-dot"></span> ALL SYSTEMS OPERATIONAL</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
